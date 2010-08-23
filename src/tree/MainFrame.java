@@ -2,44 +2,57 @@ package tree;
 
 import java.awt.BorderLayout;
 import java.awt.ScrollPane;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.WindowConstants;
+import javax.swing.tree.TreeSelectionModel;
 
-import tree.data.Chapter;
+import tree.data.Component;
 
 public class MainFrame extends JFrame
 {
     private static final long serialVersionUID = 802154455518795172L;
+
     private JTree tree;
 
-    public MainFrame()
+    public MainFrame(Component root)
     {
         super("TOC Builder");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        tree = new JTree(new MyTreeModel(new Chapter("0", "TOC", null)));
-        
+        tree = new JTree(new MyTreeModel(root));
+        tree.getSelectionModel().setSelectionMode(
+            TreeSelectionModel.SINGLE_TREE_SELECTION);
+
         JPanel bottom = new JPanel();
-        JButton addButton = new JButton("+");
-        JButton removeButton = new JButton("-");
+        JButton addChapterButton = new JButton("Add Chapter");
+        JButton addFileButton = new JButton("Add File");
+        JButton removeButton = new JButton("Remove");
         ButtonController bc = new ButtonController(tree);
-        addButton.addActionListener(bc);
+        addChapterButton.addActionListener(bc);
+        addFileButton.addActionListener(bc);
         removeButton.addActionListener(bc);
-        
-        bottom.add(addButton);
+
+        bottom.add(addChapterButton);
+        bottom.add(addFileButton);
         bottom.add(removeButton);
-        
+
         ScrollPane scPane = new ScrollPane();
         scPane.add(tree);
-        
+
         add(bottom, BorderLayout.SOUTH);
         add(scPane, BorderLayout.CENTER);
         
+        addWindowListener(new XmlProcessor(tree));
+
         setSize(350, 500);
-        setLocation(150, 200);
+        double screenWidth =
+            Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        int xPos = (int) screenWidth / 2 - 175;
+        setLocation(xPos, 200);
         setVisible(true);
     }
 }

@@ -6,7 +6,7 @@ public class Exercise extends Component
     private static final long serialVersionUID = -3096430962733194738L;
     private String filename;
 
-    protected Exercise(String filename, Component parent)
+    public Exercise(String filename, Component parent)
     {
         super(parent);
         this.filename = filename;

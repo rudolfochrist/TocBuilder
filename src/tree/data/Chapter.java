@@ -15,6 +15,7 @@ public class Chapter extends Component
         super(parent);
         this.label = label;
         this.title = title;
+        children = new ArrayList<Component>();
     }
 
     public String getLabel()
