@@ -1,0 +1,37 @@
+# my .gitignore
+
+# general unwanted tmp files
+.DS_Store
+*.log
+*.log.?
+*.log.??
+*~
+*.tmp
+
+# Xcode-specific files
+build
+*.swp
+*~.nib
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+
+#python compiled
+*.pyc
+*.pyo
+
+# java compiled
+*.class
+*.jar
+
+# C-Compiler
+*.[ao]
+
+# Eclipse specific-files
+.settings
+.project
+.classpath
+
+# project-specific files
+
