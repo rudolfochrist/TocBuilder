@@ -13,6 +13,11 @@ import javax.swing.tree.TreeSelectionModel;
 
 import tree.data.Component;
 
+/**
+ * Constructs and show the main window
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ *
+ */
 public class MainFrame extends JFrame
 {
     private static final long serialVersionUID = 802154455518795172L;

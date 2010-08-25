@@ -14,6 +14,11 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.XStreamException;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
+/**
+ * Main entry point for the application
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ *
+ */
 public class Main
 {
     public static void main(String[] args)

@@ -11,10 +11,24 @@ import tree.data.Chapter;
 import tree.data.Component;
 import tree.data.Exercise;
 
+/**
+ * Conrtoller for the three buttons.After a button
+ * sends an action to this controller, all paths of the JTree are expanded.
+ * Each time a new node is inserted or removed the Controller creates a new 
+ * instance of {@link MyTreeModel} and passes it to the JTree.
+ * 
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ *
+ */
 public class ButtonController implements ActionListener
 {
     private JTree tree;
 
+    /**
+     * Button controller needs a reference of the JTRee. Model, Components
+     * of the tree are retrvieved from the passed JTree
+     * @param tree
+     */
     public ButtonController(JTree tree)
     {
         this.tree = tree;

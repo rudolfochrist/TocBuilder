@@ -10,6 +10,11 @@ import tree.data.Chapter;
 import tree.data.Component;
 import tree.data.Exercise;
 
+/**
+ * TreeModel for the JTree. Methods are mapped to the Composite tree structure
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ *
+ */
 public class MyTreeModel implements TreeModel
 {
 

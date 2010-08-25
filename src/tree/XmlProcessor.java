@@ -13,6 +13,12 @@ import tree.data.Exercise;
 
 import com.thoughtworks.xstream.XStream;
 
+/**
+ * Fired if the main window is closed. When action arrives the tree structure
+ * gets serialized to XML.
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ *
+ */
 public class XmlProcessor implements WindowListener
 {
 
