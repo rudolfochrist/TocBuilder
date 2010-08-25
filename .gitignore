@@ -37,3 +37,4 @@ build
 
 .checkstyle
 toc.xml
+doc/*
