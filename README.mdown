@@ -8,8 +8,8 @@ This XML file is needed for the Android Textbook App.
 
 ## Requirements ##
 
-Java 1.5
-XStream Core 1.3.1 [http://xstream.codehaus.org/](http://xstream.codehaus.org/)
+- Java 1.5  
+- XStream Core 1.3.1 [http://xstream.codehaus.org/](http://xstream.codehaus.org/)
 
 ## License ##
 
