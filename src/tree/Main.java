@@ -23,7 +23,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        XStream xstream = new XStream(new DomDriver());
+        XStream xstream = new XStream(new DomDriver("UTF-8"));
         xstream.alias("chapter", Chapter.class);
         xstream.alias("exercise", Exercise.class);
         xstream.addImplicitCollection(Chapter.class, "children");

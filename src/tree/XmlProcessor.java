@@ -2,8 +2,12 @@ package tree;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 import javax.swing.JTree;
 
@@ -12,6 +16,7 @@ import tree.data.Component;
 import tree.data.Exercise;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 /**
  * Fired if the main window is closed. When action arrives the tree structure
@@ -46,8 +51,14 @@ public class XmlProcessor implements WindowListener
         Component root = (Component) tree.getModel().getRoot();
         try
         {
-            FileWriter out = new FileWriter("toc.xml");
-            xstream.toXML(root, out);
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Writer writer = new OutputStreamWriter(out, "UTF-8");
+            
+            xstream.toXML(root, writer);
+            
+            FileWriter fWriter = new FileWriter("toc.xml");
+            fWriter.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
+            fWriter.write(out.toString("UTF-8"));
         }
         catch (IOException e1)
         {
