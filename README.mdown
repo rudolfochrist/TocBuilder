@@ -1,6 +1,6 @@
 # README #
 
-## Into ##
+## Intro ##
 
 This program is part of my bachelor's thesis. The TocBuilder constructs a Table of Contents in XML.
 
