@@ -107,6 +107,9 @@ public class Chapter extends Component
         return children.indexOf(child);
     }
     
+    /**
+     * Returns a String with format: "[label] [title]"
+     */
     @Override
     public String toString()
     {

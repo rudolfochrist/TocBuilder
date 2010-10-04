@@ -21,6 +21,10 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  */
 public class Main
 {
+    /**
+     * This is the main entry point of this application
+     * @param args
+     */
     public static void main(String[] args)
     {
         XStream xstream = new XStream(new DomDriver("UTF-8"));

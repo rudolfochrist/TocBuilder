@@ -16,4 +16,9 @@ public abstract class Component implements Serializable
     {
         this.parent = parent;
     }
+
+    public Component getParent()
+    {
+        return parent;
+    }
 }
