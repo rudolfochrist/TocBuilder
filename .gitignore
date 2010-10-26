@@ -39,3 +39,5 @@ build
 toc.xml
 doc/*
 build/*
+ivy/*
+lib/*
