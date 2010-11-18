@@ -23,28 +23,28 @@ namespace :ivy do
     
     ant.taskdef :resource => "org/apache/ivy/ant/antlib.xml", :classpathref => "ivy.lib.path"
   end
-end
-
-desc "Install dependencies"
-task :go => "ivy:install" do
-  ant.retrieve :organisation => "com.thoughtworks.xstream", 
-    :module => "xstream", 
-    :revision => "1.3.1", 
-    :pattern => "lib/[artifact].[ext]", 
-    :inline => "true"
+  
+  desc "Install dependencies"
+  task :go => "ivy:install" do
+    ant.retrieve :organisation => "com.thoughtworks.xstream", 
+      :module => "xstream", 
+      :revision => "1.3.1", 
+      :pattern => "lib/[artifact].[ext]", 
+      :inline => "true"
+  end
 end
 
 desc  "Compile sources"
 task :compile do
-  mkdir_p "build"
+  mkdir_p "bin"
   
   ant.path :id => "project.class.path" do
-    pathelement :location => "build"
+    pathelement :location => "bin"
     pathelement :location => "lib/xstream.jar"
   end
   
   ant.javac :srcdir => "src", 
-    :destdir => "build", 
+    :destdir => "bin", 
     :classpathref => "project.class.path",
     :includeAntRuntime => false
 end
@@ -56,5 +56,14 @@ task :run => :compile do
     :classpathref => "project.class.path",
     :fork => true
 end
+
+desc "Build executable jar"
+task :build => :compile do
+  puts "Build executable jar in /build"
+  mkdir_p "build"
+  ant.jar :destfile => "build/TocBuilder.jar", :basedir => "bin" do
+    
+  end
+end 
   
 task :default => :run
