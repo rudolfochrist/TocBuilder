@@ -56,9 +56,14 @@ public class XmlProcessor implements WindowListener
             
             xstream.toXML(root, writer);
             
+            writer.close();
+            out.close();
+            
             FileWriter fWriter = new FileWriter("toc.xml");
             fWriter.write("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n");
             fWriter.write(out.toString("UTF-8"));
+            
+            fWriter.close();
         }
         catch (IOException e1)
         {
