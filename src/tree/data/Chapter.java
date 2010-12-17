@@ -65,7 +65,15 @@ public class Chapter extends Component
      */
     public void addChild(Component c)
     {
-        this.children.add(c);
+    	if(this.children!= null)
+    	{
+    		this.children.add(c);
+    	}
+    	else
+    	{
+    		this.children = new ArrayList<Component>();
+    		this.children.add(c);
+    	}
     }
     
     /**
