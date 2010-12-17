@@ -24,7 +24,7 @@ public class MainFrame extends JFrame
 
     private JTree tree;
 
-    public MainFrame(Component root)
+    public MainFrame(Component root, String isbn)
     {
         super("TOC Builder");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -36,14 +36,20 @@ public class MainFrame extends JFrame
         JButton addChapterButton = new JButton("Add Chapter");
         JButton addFileButton = new JButton("Add File");
         JButton removeButton = new JButton("Remove");
+        JButton addBarcodeButton = new JButton("Barcodes");
+       
         ButtonController bc = new ButtonController(tree);
         addChapterButton.addActionListener(bc);
         addFileButton.addActionListener(bc);
         removeButton.addActionListener(bc);
+        
+        BarcodeController bcc = new BarcodeController(tree, isbn);
+        addBarcodeButton.addActionListener(bcc);
 
         bottom.add(addChapterButton);
         bottom.add(addFileButton);
         bottom.add(removeButton);
+        bottom.add(addBarcodeButton);
 
         ScrollPane scPane = new ScrollPane();
         scPane.add(tree);
@@ -53,7 +59,7 @@ public class MainFrame extends JFrame
         
         addWindowListener(new XmlProcessor(tree));
 
-        setSize(350, 500);
+        setSize(450, 500);
         double screenWidth =
             Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         int xPos = (int) screenWidth / 2 - 175;
