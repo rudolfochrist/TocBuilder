@@ -33,13 +33,15 @@ public class Main
         xstream.addImplicitCollection(Chapter.class, "children");
         xstream.setMode(XStream.ID_REFERENCES);
         File f = new File("toc.xml");
+        String isbn;
 
         if (f.exists())
         {
             try
             {
                 Component root = (Component) xstream.fromXML(new FileReader(f));
-                new MainFrame(root);
+                isbn = JOptionPane.showInputDialog("Bitte ISBN Nummer angeben");
+                new MainFrame(root, isbn);
             }
             catch (FileNotFoundException e)
             {
@@ -53,7 +55,8 @@ public class Main
         else
         {
             Component root = new Chapter("0", "TOC", null);
-            new MainFrame(root);
+            isbn = JOptionPane.showInputDialog("Bitte ISBN Nummer angeben");
+            new MainFrame(root, isbn);
         }
     }
 }
