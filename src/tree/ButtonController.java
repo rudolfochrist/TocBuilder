@@ -3,6 +3,7 @@ package tree;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
@@ -12,26 +13,28 @@ import tree.data.Component;
 import tree.data.Exercise;
 
 /**
- * Conrtoller for the three buttons.After a button
+ * Controller for the three buttons.After a button
  * sends an action to this controller, all paths of the JTree are expanded.
  * Each time a new node is inserted or removed the Controller creates a new 
  * instance of {@link MyTreeModel} and passes it to the JTree.
  * 
- * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com)
+ * @author Sebastian (Rudolfo) Christ (rudolfo.christ@gmail.com), Verena Lambrecht
  *
  */
 public class ButtonController implements ActionListener
 {
     private JTree tree;
+    private JComboBox jc;
 
     /**
      * Button controller needs a reference of the JTRee. Model, Components
      * of the tree are retrvieved from the passed JTree
      * @param tree
      */
-    public ButtonController(JTree tree)
+    public ButtonController(JTree tree,JComboBox jc)
     {
         this.tree = tree;
+        this.jc = jc;
     }
 
     public void actionPerformed(ActionEvent e)
@@ -101,28 +104,32 @@ public class ButtonController implements ActionListener
                             "Label and Title cannot be blank");
                     }
                 }
-                else
-                // action.equals("Add File")
+                else 
                 {
-                    String filename =
-                        JOptionPane.showInputDialog(tree, "Filename:");
-                    if (filename == null)
-                        return;
+                	  // action.equals("Add File")
+                
+                        String filename = (String) jc.getSelectedItem();
+                           // JOptionPane.showInputDialog(tree, "Filename:");
+                        
+                        if (filename == null)
+                            return;
 
-                    if (!filename.equals(""))
-                    {
-                        Exercise newExercise = new Exercise(filename, selected);
-                        ((Chapter) selected).addChild(newExercise);
+                        if (!filename.equals(""))
+                        {
+                            Exercise newExercise = new Exercise(filename, selected);
+                            ((Chapter) selected).addChild(newExercise);
 
-                        tree.setModel(new MyTreeModel(root));
-                        tree.setSelectionPath(selectionPath);
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(tree,
-                            "Filename cannot be blank");
-                    }
+                            tree.setModel(new MyTreeModel(root));
+                            tree.setSelectionPath(selectionPath);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(tree,
+                                "Filename cannot be blank");
+                        }
+                    
                 }
+                
             }
         }
         
@@ -136,5 +143,7 @@ public class ButtonController implements ActionListener
             tree.expandRow(i);
         }
     }
+    
+  
 
 }
